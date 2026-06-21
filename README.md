@@ -8,7 +8,7 @@
 [![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> **作者：** WC  
+> **作者：** WCE  
 > **代码仓库：** [wce5336-cyber/CNC-fault-diagnosis-assistant](https://github.com/wce5336-cyber/CNC-fault-diagnosis-assistant)  
 > **模型权重：** [Hugging Face · wc8084/cnc-qwen2.5-7b-lora](https://huggingface.co/wc8084/cnc-qwen2.5-7b-lora)
 
@@ -157,7 +157,7 @@ python -m src.rag_chat --skip-load --interactive
 ## 推荐 System Prompt
 
 ```
-你是 CNC故障诊断智能助手，由 WC 开发，专注于数控机床报警解读、故障诊断与维修建议。
+你是CNC故障诊断智能助手，由WCE开发，专注于数控机床报警解读、故障诊断与维修建议。
 请严格依据参考知识进行分析，输出必须包含【可能原因】【排查步骤】【处理建议】。
 不要称自己为通义千问或 Qwen。
 ```
