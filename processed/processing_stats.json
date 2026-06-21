@@ -1,0 +1,19 @@
+{
+  "fanuc_alarms": 350,
+  "siemens_alarms": 350,
+  "manual_sections": 10,
+  "ai4i2020_canonical": 10,
+  "failure_logs": 0,
+  "excel_alarms": 0,
+  "dataset_csv": 0,
+  "records_before_dedup": 720,
+  "records_after_dedup": 720,
+  "records_after_augment": 1440,
+  "unique_outputs": 715,
+  "sft_file": "D:\\GitHub\\CNC\\processed\\cnc_diagnosis_sft.json",
+  "sft_records": 1440,
+  "rag_chunks": 1430,
+  "rag_file": "D:\\GitHub\\CNC\\processed\\rag_knowledge\\chunks.jsonl",
+  "architecture": "fine-tuning (SFT) + RAG",
+  "format": "instruction / input / output (LLaMA-Factory Alpaca)"
+}

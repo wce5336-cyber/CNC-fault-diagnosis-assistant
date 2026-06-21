@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# 模型权重（发布在 Hugging Face）
+models/*
+!models/.gitkeep
+qwen2.5-7b-lora/
+CNC-lora/
+*.safetensors
+*.bin
+*.pt
+*.pth
+optimizer.pt
+
+# 向量库（本地 python -m src.build_rag_index 生成）
+processed/rag_chroma/
+
+# 缓存与日志
+.cache/
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE / 本地工具
+.idea/
+.vscode/
+.claude/
+_recover_fetch.py
+
+# 可选：不提交原始 PDF（已提供 parsed CSV）
+# data/external_knowledge/raw/*.pdf

@@ -1,0 +1,193 @@
+{
+  "adapter": "cnc-qwen2.5-7b-lora",
+  "dataset": "processed/cnc_diagnosis_sft.json",
+  "num_samples": 12,
+  "avg_format_score": 0.7222222222222222,
+  "avg_jaccard": 0.1712103661821707,
+  "format_pass_rate": 0.5833333333333334,
+  "by_category": {
+    "other": {
+      "count": 2,
+      "avg_format_score": 1.0,
+      "avg_jaccard": 0.1539473684210526
+    },
+    "siemens": {
+      "count": 3,
+      "avg_format_score": 1.0,
+      "avg_jaccard": 0.4393018018018018
+    },
+    "sensor": {
+      "count": 2,
+      "avg_format_score": 1.0,
+      "avg_jaccard": 0.09090909090909091
+    },
+    "fanuc": {
+      "count": 3,
+      "avg_format_score": 0.3333333333333333,
+      "avg_jaccard": 0.0566609977324263
+    },
+    "maintenance": {
+      "count": 2,
+      "avg_format_score": 0.3333333333333333,
+      "avg_jaccard": 0.038461538461538464
+    }
+  },
+  "items": [
+    {
+      "index": 1603,
+      "category": "other",
+      "alarm_code": null,
+      "instruction": "请根据以下机床故障信息进行诊断分析，给出可能原因、排查步骤和处理建议。",
+      "input": "机床系统：汽车产线 CNC（Tata Motors 案例）\n故障现象：电气柜报警，部分轴或辅助功能失效，可能跳闸或急停\n设备编号：CNC019；停机时长：7 小时",
+      "reference": "【可能原因】\n1. 接线松动或端子氧化\n2. 短路或过载保护动作\n3. 继电器/接触器故障\n4. 外部电网波动\n\n【排查步骤】\n1. 检查断路器与熔断器状态\n2. 测量三相电压与接地\n3. 排查急停与安全回路\n4. 分段断电定位短路点\n5. 历史维修耗时约 5 小时，可参考排产\n6. 历史维修耗时约 5 小时，可参考排产\n7. 历史维修耗时约 5 小时，可参考排产\n\n【处理建议】\n1. 现场处理记录：Rewired machine\n2. 紧固接线并更换损坏端子\n3. 排除短路后复位保护\n4. 更换故障继电器或接触器\n5. 必要时加装稳压设备",
+      "prediction": "【可能原因】\n1. 短路或过载导致保护动作\n2. 接触器或断路器故障\n3. 紧急停机按钮被触发\n\n【排查步骤】\n1. 记录报警参数与历史维修耗时\n2. 检查断路器与接触器状态\n3. 测量三相电源与地线绝缘\n4. 排查急停回路与安全栅\n5. 检查 PLC 与驱动器报错代码\n6. 历史维修耗时约 7 小时，可参考排产\n\n【处理建议】\n1. 排除故障后复位急停\n2. 更换损坏断路器或接触器\n3. 短路保护跳闸需查找漏电点\n4. 紧急停机按钮需复位后重新授权\n5. 现场处理约 2 小时，后续送修约 5 小时",
+      "format_score": 1.0,
+      "jaccard": 0.15789473684210525,
+      "ref_len": 273,
+      "pred_len": 252
+    },
+    {
+      "index": 85,
+      "category": "siemens",
+      "alarm_code": "8000",
+      "instruction": "请根据以下机床故障信息进行诊断分析，给出可能原因、排查步骤和处理建议。",
+      "input": "机床系统：Siemens SINUMERIK 840D\n报警代码：8000\n故障现象：Channel %1 option 'Interrupt routines' not set",
+      "reference": "【可能原因】\n1. Channel %1 option 'Interrupt routines' not set\n2. Fast NCK inputs are required for the input signals in order to activate the interrupt routines and rapid lift from contour. This function is not included in the basic version and must be retrofitted when needed.\n3. 系统反应：Interpreter stop NC Start disable in this channel. Interface signals are set. Alarm display.\n\n【排查步骤】\n1. 在 Siemens 操作面板查看 NCK 报警 8000 详情\n2. 记录报警参数与当前加工状态\n3. 查阅 840D 诊断手册对应条目\n4. 检查相关轴/驱动/PLC 信号\n\n【处理建议】\n1. Please inform the authorized personnel/service department. Do not use rapid interrupt inputs or con\u0002tact the machine manufacturer with a view to retrofitting this option!\n2. 按手册 Remedy 说明执行修复\n3. 报警清除后重新回零验证\n4. 确认无后续报警后恢复生产",
+      "prediction": "【可能原因】\n1. 报警 8000 Channel %1 option 'Interrupt routines' not set\n2. The option 'Interrupt routines' has not been set for the channel. This option is required for interrupt routines. The option can be set in the channel configuration.\n\n【排查步骤】\n1. 在 Siemens 操作面板查看 NCK 报警 8000 详情\n2. 记录报警参数与当前加工状态\n3. 查阅 840D 诊断手册对应条目\n4. 检查相关轴/驱动/PLC 信号\n\n【处理建议】\n1. Set the option 'Interrupt routines' in the channel configuration.\n2. 按手册 Remedy 说明执行修复\n3. 报警清除后重新回零验证\n4. 确认无后续报警后恢复生产",
+      "format_score": 1.0,
+      "jaccard": 0.4125,
+      "ref_len": 705,
+      "pred_len": 461
+    },
+    {
+      "index": 1601,
+      "category": "sensor",
+      "alarm_code": null,
+      "instruction": "请根据以下机床故障信息进行诊断分析，给出可能原因、排查步骤和处理建议。",
+      "input": "机床系统：预测性维护平台（ai4i2020）\n故障现象：无明显单一传感器趋势，间歇性异常停机\n传感器特征：各传感器读数无明显规律，Machine failure 偶发",
+      "reference": "【可能原因】\n1. 电气接触不良或信号干扰\n2. 传感器偶发失效\n3. 软件/PLC 逻辑边界条件触发\n\n【排查步骤】\n1. 调取故障前后报警与操作日志\n2. 检查电缆屏蔽与接地\n3. 对各传感器做交叉验证\n4. 排查近期程序或参数变更\n\n【处理建议】\n1. 紧固接头并改善屏蔽\n2. 更换可疑传感器\n3. 回滚异常参数变更\n4. 建立故障复现记录便于根因分析",
+      "prediction": "【可能原因】\n1. 累积磨损导致突发故障\n2. 紧固件松动引发振动\n3. 电气接触不良造成间歇停机\n4. 环境因素如温度波动影响\n\n【排查步骤】\n1. 检查停机前后运行参数与负荷\n2. 紧固主要连接件与传动轴\n3. 测试各驱动与接触器动作\n4. 检查冷却与润滑系统工作\n5. 历史维修耗时约 1 小时，可参考排产\n\n【处理建议】\n1. 累计磨损需定期更换磨损件\n2. 紧固件松动需定期检查紧固\n3. 排查电气接触不良与接地\n4. 环境因素需改善通风与润滑\n5. 现场处理约 2 小时，后续送修约 5 小时",
+      "format_score": 1.0,
+      "jaccard": 0.09090909090909091,
+      "ref_len": 180,
+      "pred_len": 252
+    },
+    {
+      "index": 30,
+      "category": "fanuc",
+      "alarm_code": "PS35",
+      "instruction": "请根据以下机床故障信息进行诊断分析，给出可能原因、排查步骤和处理建议。",
+      "input": "机床系统：FANUC CNC\n报警代码：PS35\n故障现象：CAN",
+      "reference": "【可能原因】\n1. 报警含义：CAN\n2. NOT COMMANDED G31 1) G31 cannot be specified. This alarm is generated when a G code (such as for tool radius/tool nose radius compensation) of group 07 is not canceled. 2) A torque limit skip was not specified in a torque limit skip command (G31P98 o\n\n【排查步骤】\n1. 在 FANUC 诊断界面确认报警号 PS35 或 CNC35\n2. 记录报警发生时的程序段与操作模式\n3. 查阅 FANUC 维修手册对应章节\n4. 检查与该报警相关的硬件与参数\n\n【处理建议】\n1. 按手册描述逐项排除故障原因\n2. 修复后执行报警复位（RESET）\n3. 空运转验证各轴与主轴动作正常\n4. 恢复加工前做首件确认",
+      "prediction": "【可能原因】\n1. 报警 35 CAN Bus error\n2. The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is detected. - The CAN bus error is",
+      "format_score": 0.3333333333333333,
+      "jaccard": 0.04081632653061224,
+      "ref_len": 450,
+      "pred_len": 3122
+    },
+    {
+      "index": 325,
+      "category": "other",
+      "alarm_code": null,
+      "instruction": "作为CNC故障诊断专家，请针对下列故障现象给出专业诊断意见。",
+      "input": "机床系统：汽车产线 CNC（Tata Motors 案例）\n故障现象：电气柜报警，部分轴或辅助功能失效，可能跳闸或急停\n设备编号：CNC014；停机时长：7 小时",
+      "reference": "【可能原因】\n1. 接线松动或端子氧化\n2. 短路或过载保护动作\n3. 继电器/接触器故障\n4. 外部电网波动\n\n【排查步骤】\n1. 检查断路器与熔断器状态\n2. 测量三相电压与接地\n3. 排查急停与安全回路\n4. 分段断电定位短路点\n5. 历史维修耗时约 5 小时，可参考排产\n6. 历史维修耗时约 5 小时，可参考排产\n\n【处理建议】\n1. 现场处理记录：Rewired machine\n2. 紧固接线并更换损坏端子\n3. 排除短路后复位保护\n4. 更换故障继电器或接触器\n5. 必要时加装稳压设备",
+      "prediction": "【可能原因】\n1. 短路或过载导致保护动作\n2. 接触器或断路器故障\n3. 紧急停机按钮被触发\n4. 电源模块故障\n5. 系统参数异常导致保护停机\n\n【排查步骤】\n1. 记录报警参数与历史维修耗时\n2. 检查断路器与接触器状态\n3. 测量三相电源与地线绝缘\n4. 排查急停回路与安全栅\n5. 检查 PLC 与驱动器报错代码\n6. 历史维修耗时约 7 小时，可参考排产\n\n【处理建议】\n1. 排除故障后复位急停\n2. 更换损坏断路器或接触器\n3. 短路保护跳闸需查找漏电点\n4. 紧急停机按钮需复位后重新授权\n5. 现场处理约 2 小时，后续送修约 5 小时",
+      "format_score": 1.0,
+      "jaccard": 0.15,
+      "ref_len": 251,
+      "pred_len": 278
+    },
+    {
+      "index": 1198,
+      "category": "fanuc",
+      "alarm_code": "PS1806",
+      "instruction": "作为CNC故障诊断专家，请针对下列故障现象给出专业诊断意见。",
+      "input": "机床系统：FANUC CNC\n报警代码：PS1806\n故障现象：DEVICE",
+      "reference": "【可能原因】\n1. 报警含义：DEVICE\n2. TYPE MISS MATCH An operation not possible on the I/O device that is currently selected in the setting was specified. This alarm is also generated when file rewind is instructed even though the I/O device is not a FANUC Cassette.\n\n【排查步骤】\n1. 在 FANUC 诊断界面确认报警号 PS1806 或 CNC1806\n2. 记录报警发生时的程序段与操作模式\n3. 查阅 FANUC 维修手册对应章节\n4. 检查与该报警相关的硬件与参数\n\n【处理建议】\n1. 按手册描述逐项排除故障原因\n2. 修复后执行报警复位（RESET）\n3. 空运转验证各轴与主轴动作正常\n4. 恢复加工前做首件确认",
+      "prediction": "【可能原因】\n1. 报警 1806 DEVICE COMMUNICATION ERROR\n2. The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device communication error is detected. - The device",
+      "format_score": 0.3333333333333333,
+      "jaccard": 0.0625,
+      "ref_len": 435,
+      "pred_len": 4336
+    },
+    {
+      "index": 192,
+      "category": "maintenance",
+      "alarm_code": null,
+      "instruction": "请根据以下机床故障信息进行诊断分析，给出可能原因、排查步骤和处理建议。",
+      "input": "机床系统：汽车产线 CNC（Tata Motors 案例）\n故障现象：机床 CNC019 到达计划维护节点，需执行 Electrical System\n设备编号：CNC019",
+      "reference": "【可能原因】\n1. 按计划维护类型：Electrical System\n2. 预防性维护以降低突发故障风险\n\n【排查步骤】\n1. 查阅该机型维护检查表\n2. 确认停机窗口与备件\n3. 执行维护项目并记录\n4. 维护后做空运转测试\n\n【处理建议】\n1. 电气系统点检：紧固接线端子、检查接地、测试急停与安全回路\n2. Checked electrical components",
+      "prediction": "【可能原因】\n1. 按计划维护项目执行\n2. 累计运行时长或维护周期到期\n3. 检查电气接线与接地\n4. 测量绝缘电阻与三相电压\n5. 紧固接线端子与接地排\n6. 检查冷却与通风系统\n7. 现场处理约 1 小时，后续送修约 2 小时",
+      "format_score": 0.3333333333333333,
+      "jaccard": 0.038461538461538464,
+      "ref_len": 187,
+      "pred_len": 116
+    },
+    {
+      "index": 188,
+      "category": "fanuc",
+      "alarm_code": "PS321",
+      "instruction": "请根据以下机床故障信息进行诊断分析，给出可能原因、排查步骤和处理建议。",
+      "input": "机床系统：FANUC CNC\n报警代码：PS321\n故障现象：ILLEGAL",
+      "reference": "【可能原因】\n1. 报警含义：ILLEGAL\n2. REPEATED TIME IS IN THE PATTERN REPEATING CYCLE T A zero or a negative value is specified in a multiple repetitive canned closed loop cycle (G73) as a repeated time.\n\n【排查步骤】\n1. 在 FANUC 诊断界面确认报警号 PS321 或 CNC321\n2. 记录报警发生时的程序段与操作模式\n3. 查阅 FANUC 维修手册对应章节\n4. 检查与该报警相关的硬件与参数\n\n【处理建议】\n1. 按手册描述逐项排除故障原因\n2. 修复后执行报警复位（RESET）\n3. 空运转验证各轴与主轴动作正常\n4. 恢复加工前做首件确认",
+      "prediction": "【可能原因】\n1. 报警 321 ILLEGAL MACHINE DATA\n2. The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine data is not set correctly. - The machine communication error is detected. - The machine communication error is detected. - The machine communication error is detected. - The machine communication error is detected. - The machine communication error is detected. - The machine communication error is detected. - The machine communication error is detected. - The machine communication error is detected. - The machine communication error is detected. - The machine communication error is detected. - The machine communication error is detected. - The machine",
+      "format_score": 0.3333333333333333,
+      "jaccard": 0.06666666666666667,
+      "ref_len": 371,
+      "pred_len": 3562
+    },
+    {
+      "index": 1602,
+      "category": "siemens",
+      "alarm_code": "10745",
+      "instruction": "请根据以下机床故障信息进行诊断分析，给出可能原因、排查步骤和处理建议。",
+      "input": "机床系统：Siemens SINUMERIK 840D\n报警代码：10745\n故障现象：Channel %1 block %2 WAB end position not clear",
+      "reference": "【可能原因】\n1. Channel %1 block %2 WAB end position not clear\n2. In the WAB block and in the following block, the position has been programmed perpendicular to the machining direction. In the WAB block, no position has been indicated in the machining plane.\n3. 系统反应：Correction block is reorganized. Local alarm reaction. Interface signals are set. Alarm display. NC Stop on alarm at block end. NCK alarms 01/2008 Ove\n\n【排查步骤】\n1. 在 Siemens 操作面板查看 NCK 报警 10745 详情\n2. 记录报警参数与当前加工状态\n3. 查阅 840D 诊断手册对应条目\n4. 检查相关轴/驱动/PLC 信号\n\n【处理建议】\n1. Modify part program. Either remove the position data for the infeed axis from the WAB block or the following block, or program a position in the machining plane in the WAB block as well.\n2. 按手册 Remedy 说明执行修复\n3. 报警清除后重新回零验证\n4. 确认无后续报警后恢复生产",
+      "prediction": "【可能原因】\n1. 系统反应：NC Start not ready\n2. The end position of the WAB (workpiece axis block) is not clear. The end position of the WAB (workpiece axis block) is not clear.\n\n【排查步骤】\n1. 在 Siemens 操作面板查看 NCK 报警 10745 详情\n2. 记录报警参数与当前加工状态\n3. 查阅 840D 诊断手册对应条目\n4. 检查相关轴/驱动/PLC 信号\n\n【处理建议】\n1. Set the end position of the WAB (workpiece axis block).\n2. 按手册 Remedy 说明执行修复\n3. 报警清除后重新回零验证\n4. 确认无后续报警后恢复生产",
+      "format_score": 1.0,
+      "jaccard": 0.40540540540540543,
+      "ref_len": 761,
+      "pred_len": 385
+    },
+    {
+      "index": 923,
+      "category": "maintenance",
+      "alarm_code": null,
+      "instruction": "作为CNC故障诊断专家，请针对下列故障现象给出专业诊断意见。",
+      "input": "机床系统：汽车产线 CNC（Tata Motors 案例）\n故障现象：机床 CNC032 到达计划维护节点，需执行 Vibration Control\n设备编号：CNC032",
+      "reference": "【可能原因】\n1. 按计划维护类型：Vibration Control\n2. 预防性维护以降低突发故障风险\n\n【排查步骤】\n1. 查阅该机型维护检查表\n2. 确认停机窗口与备件\n3. 执行维护项目并记录\n4. 维护后做空运转测试\n\n【处理建议】\n1. 进行振动治理：检查轴承间隙、联轴器对中、刀具悬伸与切削参数优化\n2. Adjusted vibration damping",
+      "prediction": "【可能原因】\n1. 按计划维护项目执行\n2. 累计运行时长或维护周期到期\n3. 检查轴承与传动间隙\n4. 测量振动与噪声水平\n5. 紧固地脚与传动连接\n6. 检查冷却与通风系统\n7. 现场处理约 1 小时，后续送修约 2 小时",
+      "format_score": 0.3333333333333333,
+      "jaccard": 0.038461538461538464,
+      "ref_len": 187,
+      "pred_len": 113
+    },
+    {
+      "index": 471,
+      "category": "siemens",
+      "alarm_code": "10702",
+      "instruction": "作为CNC故障诊断专家，请针对下列故障现象给出专业诊断意见。",
+      "input": "机床系统：Siemens SINUMERIK 840D\n报警代码：10702\n故障现象：Channel %1 NCK protection zone %2 violated during manual mode",
+      "reference": "【可能原因】\n1. Channel %1 NCK protection zone %2 violated during manual mode\n2. The workpiece-related NCK protection zone has been violated. Note that another tool-related protec\u0002tion zone is still active. The workpiece-related protected area can be traversed after a new NC Start.\n3. 系统反应：Local alarm reaction. Interface signals are set. Alarm display.\n\n【排查步骤】\n1. 在 Siemens 操作面板查看 NCK 报警 10702 详情\n2. 记录报警参数与当前加工状态\n3. 查阅 840D 诊断手册对应条目\n4. 检查相关轴/驱动/PLC 信号\n\n【处理建议】\n1. Protection zone can be traversed after a new NC Start.\n2. 按手册 Remedy 说明执行修复\n3. 报警清除后重新回零验证\n4. 确认无后续报警后恢复生产",
+      "prediction": "【可能原因】\n1. 系统反应：NC Start not ready\n2. The NCK protection zone has been violated during manual mode. The NCK protection zone has been violated during manual mode.\n\n【排查步骤】\n1. 在 Siemens 操作面板查看 NCK 报警 10702 详情\n2. 记录报警参数与当前加工状态\n3. 查阅 840D 诊断手册对应条目\n4. 检查相关轴/驱动/PLC 信号\n\n【处理建议】\n1. The NCK protection zone has been violated during manual mode. The NCK protection zone has been violated during manual mode.\n2. 按手册 Remedy 说明执行修复\n3. 报警清除后重新回零验证\n4. 确认无后续报警后恢复生产",
+      "format_score": 1.0,
+      "jaccard": 0.5,
+      "ref_len": 566,
+      "pred_len": 447
+    },
+    {
+      "index": 40,
+      "category": "sensor",
+      "alarm_code": null,
+      "instruction": "请根据以下机床故障信息进行诊断分析，给出可能原因、排查步骤和处理建议。",
+      "input": "机床系统：预测性维护平台（ai4i2020）\n故障现象：主轴转速波动，扭矩输出不稳定，可能伴随驱动器报警\n传感器特征：Rotational speed [rpm] 波动，Torque [Nm] 异常",
+      "reference": "【可能原因】\n1. 电源电压不稳或缺相\n2. 主轴/伺服驱动器故障\n3. 电机绕组或接线异常\n\n【排查步骤】\n1. 测量进线三相电压与平衡度\n2. 检查驱动器报警代码\n3. 检查电机接线与接地\n4. 查看近期是否有过载工况\n\n【处理建议】\n1. 排除电网问题后重启驱动器\n2. 修复或更换故障驱动模块\n3. 检查并紧固电气连接\n4. 复核过载保护参数设置",
+      "prediction": "【可能原因】\n1. 轴承磨损导致转速与扭矩波动\n2. 轴承润滑不良引发振动\n3. 紧固件松动引发转速波动\n4. 电机侧过载保护动作\n5. 齿轮啮合不良导致扭矩波动\n\n【排查步骤】\n1. 检查轴承与齿轮磨损程度\n2. 紧固主轴与电机连接件\n3. 测量三相电流与电压\n4. 检查冷却与润滑系统工作\n5. 历史维修耗时约 2 小时，可参考排产\n\n【处理建议】\n1. 更换磨损轴承与齿轮\n2. 紧固松动连接件与轴承座\n3. 排查电机侧过载原因\n4. 环境因素需改善通风与润滑\n5. 现场处理约 2 小时，后续送修约 5 小时",
+      "format_score": 1.0,
+      "jaccard": 0.09090909090909091,
+      "ref_len": 177,
+      "pred_len": 258
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+# Core runtime (see environment.yml for full conda spec)
+pandas>=2.0
+openpyxl>=3.1
+pypdf>=4.0
+chromadb>=0.5.0
+sentence-transformers>=3.0.0
+gradio>=4.0.0
+gradio_client>=1.0.0

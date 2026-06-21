@@ -1,0 +1,12 @@
+{
+  "fanuc_alarm_list": {
+    "url": "https://cncfixtech.com/wp-content/uploads/2025/02/Fanuc-alarm-list.pdf",
+    "description": "FANUC CNC Alarm List (Appendix A)",
+    "license_note": "公开技术文档，仅供学习研究"
+  },
+  "siemens_dasl": {
+    "url": "https://support.industry.siemens.com/cs/attachments/109248112/DAsl_0108_en.pdf",
+    "description": "SINUMERIK 840D sl Diagnostics Manual",
+    "license_note": "Siemens 官方诊断手册，仅供学习研究"
+  }
+}
