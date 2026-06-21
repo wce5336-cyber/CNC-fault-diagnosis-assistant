@@ -4,10 +4,12 @@
 输入机床系统、报警代码与故障现象，输出结构化诊断报告：**【可能原因】【排查步骤】【处理建议】**。
 
 [![Model](https://img.shields.io/badge/🤗-wc8084%2Fcnc--qwen2.5--7b--lora-yellow)](https://huggingface.co/wc8084/cnc-qwen2.5-7b-lora)
+[![GitHub](https://img.shields.io/badge/GitHub-CNC--fault--diagnosis--assistant-181717?logo=github)](https://github.com/wce5336-cyber/CNC-fault-diagnosis-assistant)
 [![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 > **作者：** WC  
+> **代码仓库：** [wce5336-cyber/CNC-fault-diagnosis-assistant](https://github.com/wce5336-cyber/CNC-fault-diagnosis-assistant)  
 > **模型权重：** [Hugging Face · wc8084/cnc-qwen2.5-7b-lora](https://huggingface.co/wc8084/cnc-qwen2.5-7b-lora)
 
 ---
